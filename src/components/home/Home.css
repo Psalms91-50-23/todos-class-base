@@ -1,0 +1,160 @@
+
+.home {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+
+.home-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0px 10px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    height: auto;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    min-height: 20vh;
+    width: 100%;
+    margin: 0px 10px;
+    padding: 0px 1rem;
+    box-sizing: border-box;
+}
+
+.username {
+    display: flex;
+    margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-right: 1rem;
+}
+
+.logout {
+    display: flex;
+}
+
+.logout-button {
+    border: none;
+    background-color: transparent;
+    /* margin-left: 25px; */
+}
+
+.logout-button:hover {
+    cursor: pointer;
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+h2 {
+    color: white;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+.logout-icon {
+    color: white;
+}
+
+.home-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding-right: 1.5rem;
+    min-width: 200px;
+}
+
+.todo-title {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.userInput {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 600px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.todo-input {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    /* max-width: 500px; */
+}
+
+.home-form {
+    width: 100%;
+}
+
+.add-button {
+    display: flex;
+    background-color: white;
+    border: none;
+    color: white;
+}
+
+.add-button:hover {
+    cursor: pointer;
+}
+
+.add-plus {
+    background-color: white;
+    padding: 0.5rem;
+
+}
+
+.add-plus-hover {
+    background-color: #ff6f47;
+}
+
+.fa-plus {
+    background-color: #ff6f47;
+    border-radius: 5px;
+    color: white;
+}
+
+.fa-plus-hover {
+    background-color: white;
+    color:#ff6f47;
+}
+
+
+.filtered-todos {
+    display: flex;
+    padding: 0px 1rem;
+    box-sizing: border-box;
+    /* height: 100%; */
+}
+/* td,th {padding: .5em 1em;} */

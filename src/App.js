@@ -1,25 +1,69 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import Home from './components/home/Home';
+import Login from './components/login/Login';
+import { Route, Routes } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      loggedIn: false
+      // history: useNavigate()
+    }
+  }
+
+  // componentDidUpdate = () => {
+  //  localStorage.removeItem("currentUser")
+  // }
+  // componentDidMount(){
+  //   if(localStorage.getItem("currentUser") === null){
+  //     this.setState({
+  //       loggedIn: !this.state.loggedIn
+  //     })
+  //     }
+  //     else{
+  //       this.setState({
+  //         loggedIn: this.state.loggedIn
+  //       })
+  //   }
+  // }
+
+  handleLoggedIn = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
+  handleLogOut = () => {
+    // saveTodoToLocalStorage()
+    localStorage.removeItem("currentUser")
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+    window.location.reload()
+  }
+
+  render = () => {
+    if(localStorage.getItem("currentUser") !== null ){
+      return (
+        <Routes>
+          <Route exact path="/" element={<Home handleLogOut={this.handleLogOut} />} ></Route>
+        </Routes>
+      )
+    }
+    else{
+      return (
+        <Routes>
+           <Route exact path="/" element={ !this.state.loggedIn ? 
+             <Login handleLoggedIn={this.handleLoggedIn} /> 
+             : 
+             <Home handleLogOut={this.handleLogOut} setState={this.setState} state={this.state} /> } >
+           </Route>
+         </Routes>
+    ) 
+    }   
+  }
 }
-
-export default App;

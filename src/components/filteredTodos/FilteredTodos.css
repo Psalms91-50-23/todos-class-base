@@ -1,0 +1,62 @@
+
+.filtered-todosContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.custom-select {
+    margin-left: 20px;
+    box-sizing: border-box;
+}
+
+.filter-todo {
+    padding: 1rem;
+    height: 100%;
+
+  }
+
+.select {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+    color: #ff6f47;
+    background-color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 13rem;
+    height: 100%; 
+}
+/* Arrow */
+.select::after {
+/* /25BC will add an arrow down icon */
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    background: #ff6f47;
+    cursor: pointer;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.select:hover::after {
+    background-color: white;
+    color: #ff6f47;
+}
