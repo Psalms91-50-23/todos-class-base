@@ -14,7 +14,6 @@ export default class Todo extends Component {
     }
 
     updateValue = (updateHomeState) => {
-      
         let tempTodo = {...this.props.todo, completed: !this.state.completed}
         this.props.todos.splice(this.props.idKey,1,tempTodo)
         this.setState({todo: tempTodo, todos: this.props.todos, todoIdKey: this.props.idKey, completed: !this.state.completed})
@@ -26,7 +25,7 @@ export default class Todo extends Component {
         return (
         <tr 
             className={"todo-tableRow" +(this.props.todo.completed? " fade": "")}>
-            <td className={"todo-task"+(this.props.todo.completed? "    completed":"")}>
+            <td className={"todo-task"+(this.props.todo.completed? " completed":"")}>
             {
                 this.props.todo.task
             }

@@ -11,25 +11,8 @@ export default class App extends Component {
     super(props)
     this.state = {
       loggedIn: false
-      // history: useNavigate()
     }
   }
-
-  // componentDidUpdate = () => {
-  //  localStorage.removeItem("currentUser")
-  // }
-  // componentDidMount(){
-  //   if(localStorage.getItem("currentUser") === null){
-  //     this.setState({
-  //       loggedIn: !this.state.loggedIn
-  //     })
-  //     }
-  //     else{
-  //       this.setState({
-  //         loggedIn: this.state.loggedIn
-  //       })
-  //   }
-  // }
 
   handleLoggedIn = () => {
     this.setState({
@@ -38,7 +21,6 @@ export default class App extends Component {
   }
 
   handleLogOut = () => {
-    // saveTodoToLocalStorage()
     localStorage.removeItem("currentUser")
     this.setState({
       loggedIn: !this.state.loggedIn

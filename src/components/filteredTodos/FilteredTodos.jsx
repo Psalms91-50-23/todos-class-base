@@ -13,22 +13,11 @@ export default class FilteredTodos extends Component {
   }
 
   componentDidMount = () => {
-
     if(this.props.filteredTodos){
       this.setState({
         filteredTodos: this.props.filteredTodos
       })
     }
-
-  }
-
-  handleChange = ( e, homeSetState ) => {
-    e.preventDefault()
-    homeSetState({
-      ...this.state,
-      options: e.target.value
-    })
-
   }
 
   filterTodos = ( e, updateHomeState ) => {
@@ -46,7 +35,6 @@ export default class FilteredTodos extends Component {
         if(options === "uncompleted" && todo.completed === false){
           return todo
         }
-
       })
       this.setState({filteredTodos: todos, todos: this.props.homeState.todos})
       updateHomeState({...this.props.homeState, filteredTodos: todos})

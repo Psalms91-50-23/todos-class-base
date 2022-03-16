@@ -20,7 +20,7 @@ export default class Home extends Component {
         updated: false
       }
     }
-      //useEffect version of class base component
+      //useEffect version of class base component with empty []
       //not recommended to use componentWillMount for sideEffects, it is used once before component is removed from the DOM, destroying any side effects set up in componentDidMount
   componentDidMount = () => {
       let todos = getTodos();
@@ -77,7 +77,6 @@ export default class Home extends Component {
     this.setState({
       todos: [{task: this.state.newTodo, completed: false},...this.state.todos],
       newTodo: ""
-    // /   todos: this.state.todos.splice(0,0, { task: this.state.newTodo, completed: false })
     })
   }
     
@@ -185,7 +184,6 @@ export default class Home extends Component {
                         todos={this.state.todos}
                         updateHomeState={this.updateState}
                         toggleDone={this.toggleDone}
-                        
                       />  
                     )
                   })

@@ -18,7 +18,6 @@ export default class Signup extends Component {
       }
     }
 
-
     handleChange = (e) => {
         e.preventDefault()
         //reseting state to remove errors as user types in new values
@@ -96,7 +95,6 @@ export default class Signup extends Component {
                                 <span className="error-msg">
                                     Length of email has to be 3 min before "@"
                                 </span>
-
                             }
                             {this.state.userExists &&
                                 <span className="error-msg">
