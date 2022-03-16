@@ -123,6 +123,7 @@ h2 {
     background-color: white;
     border: none;
     color: white;
+    padding: 0;
 }
 
 .add-button:hover {
@@ -132,7 +133,6 @@ h2 {
 .add-plus {
     background-color: white;
     padding: 0.5rem;
-
 }
 
 .add-plus-hover {
