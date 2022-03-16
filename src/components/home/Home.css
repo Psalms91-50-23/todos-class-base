@@ -143,6 +143,15 @@ h2 {
     background-color: #ff6f47;
     border-radius: 5px;
     color: white;
+    /* padding: 0.5rem; */
+}
+
+.fa-plus:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem;
+    font-size: 2rem;
 }
 
 .fa-plus-hover {
