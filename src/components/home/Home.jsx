@@ -14,8 +14,6 @@ export default class Home extends Component {
         todos: [],
         newTodo: "",
         filteredTodos: [],
-        mouseOver: false,
-        options: "",
         showText: false,
         updated: false
       }
@@ -84,18 +82,6 @@ export default class Home extends Component {
     this.setState({todos: deleteTodo(this.state.todos,idKey)})
   }
 
-  handleMouseEnter = () => {
-    this.setState({
-      mouseOver: true
-    })
-  }
-
-  handleMouseLeave = () => {
-    this.setState({
-      mouseOver: false
-    })
-  }
-  
   render(){
     return (
       <div className="home">
@@ -107,8 +93,6 @@ export default class Home extends Component {
                   <button 
                     className="logout-button" 
                     onClick={() => this.props.handleLogOut()}
-                    onMouseEnter={this.showText}
-                    onMouseLeave={this.hideText}
                   >
                     <span className="logout-icon">
                       <i className='fa fa-sign-out fa-3x'></i> 

@@ -25,7 +25,7 @@ export default class App extends Component {
     this.setState({
       loggedIn: !this.state.loggedIn
     })
-    window.location.reload()
+    // window.location.reload()
   }
 
   render = () => {
