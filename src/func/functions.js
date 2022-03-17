@@ -74,8 +74,8 @@ export function encodePassword(password){
         let numOfHashCharToAdd = Math.floor(Math.random()*10)+1
         for(var j = 0 ; j < numOfHashCharToAdd ; j ++){
             
-            let randomChar = Math.floor(Math.random()*70)
-            let tempChar = characters[randomChar]
+            let randomCharIndex = Math.floor(Math.random()*70)
+            let tempChar = characters[randomCharIndex]
         
             if( j ===  numOfHashCharToAdd-1 ){
                 //when j loop reaches end add the letter from password in
@@ -203,10 +203,11 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
     }
     else {
         const newUser = { [userState.email]: 
-            { username: userState.username,  
-            password: userState.password, 
-            email: userState.email
-        }}
+            {   username: userState.username,  
+                password: userState.password, 
+                email: userState.email
+            }
+        }
         allUsers.push(newUser)
         localStorage.setItem("currentUser", JSON.stringify(newUser))
         localStorage.setItem("users",JSON.stringify(allUsers))
@@ -230,8 +231,8 @@ export function updateCurrentUserTodos(todos){
     let currentUser = JSON.parse(localStorage.getItem("currentUser"))
     let userKey = Object.keys(currentUser)[0]
     let userValues = Object.values(currentUser)[0]
-    let currentUserTodosUpdated = {[userKey] : {...userValues, todos}}
-    localStorage.setItem("currentUser", JSON.stringify(currentUserTodosUpdated))
+    let currentUserDetailsUpdated = {[userKey] : {...userValues, todos}}
+    localStorage.setItem("currentUser", JSON.stringify(currentUserDetailsUpdated))
 }
 
 export function getTodos(){
@@ -255,14 +256,14 @@ export function getTodos(){
 export function deleteTodo(todos, todoIdKey){
     //grab current User details 
     let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))[0]
-    let todosUpdated = null
+    let todosFiltered = null
     //filter todos
-    todosUpdated = todos.filter((_, index) => index !== todoIdKey)
-    currentUser.todos = todosUpdated
+    todosFiltered = todos.filter((_, index) => index !== todoIdKey)
+    currentUser.todos = todosFiltered
     //save it back to local Storage
     localStorage.setItem("currentUser", JSON.stringify({[currentUser.email]: currentUser}))
     //returns filtered Todos so state can be updated
-    return todosUpdated
+    return todosFiltered
 }
 
 export function saveTodoToLocalStorage(todos){
