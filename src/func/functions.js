@@ -198,7 +198,7 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
             handleLoggedIn()
         }
         else{
-            console.log(`user already exists with email: ${userState.email}`);
+            console.log(`User does not exist with email: ${userState.email}`);
         }
     }
     else {
