@@ -1,5 +1,8 @@
 
-const characters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V", "W","X", "Y","Z","0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","^","&","*"]
+const characters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
+"q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G",
+"H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V", "W","X", 
+"Y","Z","0","1","2","3","4","5","6","7","8","9","!","@","#","$","%","^","&","*"]
 //70 characters in total
 
 let encodedNum = null
@@ -25,7 +28,6 @@ export function minEmailLength(email){
 }
 
 export function minPasswordCharReqReached(password){
-
     const passwordArray = password.split("")
     var capitalLetterCounter = 0
     var lowerCaseLetterCounter = 0
@@ -63,13 +65,11 @@ export function validatePassword(password){
     else return false
 }
 
-
 export function encodePassword(password){
     let passwordChar = password.split("")
     encodedNum = []
     passwordEncoded = ""
     for(var i = 0 ; i < passwordChar.length ; i ++){
-
         //this variable will hold how many characters within password to hide actual password
         let numOfHashCharToAdd = Math.floor(Math.random()*10)+1
         for(var j = 0 ; j < numOfHashCharToAdd ; j ++){
@@ -108,14 +108,12 @@ export function matchPassword( password, confirmPassword ){
 
 export function registerUser( userState, slideDown, updateState ){
     let allUsers = null
-    // let currentUser = null
     //test if all user data is in local storage then assign it
     if (localStorage.getItem("users")) {
         allUsers = JSON.parse(localStorage.getItem("users"))
     }
     //if currentUser already exists and users, test if email is already saved before registering
     if( allUsers ){
-            (JSON.parse(localStorage.getItem("users")));
             let foundUser = null;
             foundUser = allUsers.find( (user) => {
                 (Object.keys(user));
@@ -126,10 +124,14 @@ export function registerUser( userState, slideDown, updateState ){
                     return null
                 }
             }) 
-
             if(!foundUser){
                 let tempEncodedPassword = encodePassword(userState.password)
-                const newUser = { [userState.email]: { username: userState.username, password: tempEncodedPassword , email: userState.email, encodedPattern: encodedNum } };
+                const newUser = { [userState.email]: { 
+                    username: userState.username, 
+                    password: tempEncodedPassword , 
+                    email: userState.email, 
+                    encodedPattern: encodedNum } 
+                };
                 allUsers.push(newUser);
                 localStorage.setItem("users", JSON.stringify(allUsers));
                 slideDown()
@@ -142,16 +144,19 @@ export function registerUser( userState, slideDown, updateState ){
     else{
         allUsers = [];
         let tempEncodedPassword = encodePassword(userState.password);
-        const newUser = { [userState.email]: { username: userState.username, password: tempEncodedPassword , email: userState.email, encodedPattern: encodedNum} };
+        const newUser = { [userState.email]: 
+            { username: userState.username, 
+                password: tempEncodedPassword , 
+                email: userState.email, 
+                encodedPattern: encodedNum} 
+            };
         allUsers.push(newUser);
         localStorage.setItem("users", JSON.stringify(allUsers));
         slideDown();
-    }
-    
+    }   
 }
 
 export function loginUser( userState, handleLoggedIn, updateValue ){
-
     let allUsers = null;
     let passwordMatch = false;
     if (localStorage.getItem("users")) {
@@ -159,22 +164,19 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
     }
     if( allUsers ){
         let foundUser = null;
-        (JSON.parse(localStorage.getItem("users")));
         foundUser =  allUsers.find(user => {
-
-            let tempObject = Object.values(user)[0];
-            let userkey = Object.keys(user)[0];
+            let tempUserValues = Object.values(user)[0];
+            let tempUserKey = Object.keys(user)[0];
             let passwordDecoded = null
-            passwordDecoded = decodePassword(tempObject.encodedPattern, tempObject.password )
+            passwordDecoded = decodePassword(tempUserValues.encodedPattern, tempUserValues.password )
 
-            if( userkey === userState.email && passwordDecoded === userState.password){
+            if( tempUserKey === userState.email && passwordDecoded === userState.password){
                 passwordMatch = true
                 return user;
             }
             else{
                 return null
             }
-            // emailCombineKeys = emailCombineKeys.concat(Object.keys(user))
         })
         if(passwordMatch === false){
             updateValue({
@@ -182,10 +184,15 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
             })
             return
         }
-
         if(foundUser && passwordMatch === true){
             let foundUserValues = Object.values(foundUser)[0]
-            let newUser = { [userState.email] : { username: foundUserValues.username ,password: foundUserValues.password, email: foundUserValues.email, todos: foundUserValues.todos, encodedPattern: foundUserValues.encodedPattern}}
+            let newUser = { [userState.email] : 
+                { username: foundUserValues.username, 
+                password: foundUserValues.password, 
+                email: foundUserValues.email, 
+                todos: foundUserValues.todos, 
+                encodedPattern: foundUserValues.encodedPattern
+            }}
             localStorage.setItem("currentUser", JSON.stringify(newUser))
             allUsers.push(newUser)
             handleLoggedIn()
@@ -195,20 +202,22 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
         }
     }
     else {
-        const newUser = { [userState.email]: { username: userState.username,  password: userState.password, email: userState.email}}
+        const newUser = { [userState.email]: 
+            { username: userState.username,  
+            password: userState.password, 
+            email: userState.email
+        }}
         allUsers.push(newUser)
         localStorage.setItem("currentUser", JSON.stringify(newUser))
         localStorage.setItem("users",JSON.stringify(allUsers))
         handleLoggedIn()
-    }   
-    
+    }    
 }
 
 export function saveTodo(todo){
     let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))
     let tempTodos = null
     if(currentUser[0].todos.length){
-        // tempTodos = [todo, ...currentUser[0].todos]
         currentUser[0].todos.splice(0,1,todo)
     }else{
         tempTodos = [todo]
@@ -277,8 +286,4 @@ export function saveTodoToLocalStorage(todos){
         })
         localStorage.setItem("users", JSON.stringify(tempAllUsers))
     }
-}
-
-export function saveFilteredTodos(todos){
-    localStorage.setItem("filtered", JSON.stringify(todos))
 }

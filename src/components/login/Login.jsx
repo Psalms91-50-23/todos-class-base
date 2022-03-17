@@ -144,7 +144,9 @@ export default class Login extends Component {
                             </form>
                         </div>
                     </div>
-                    <div className={"popup"+ (!this.state.slideDown && !this.state.slideUp ? " bottom" :  !this.state.slideDown && this.state.slideUp ? " slide-up" : " slide-down") }>
+                    <div className={"popup"+ (!this.state.slideDown && !this.state.slideUp ? " bottom" 
+                    :  
+                    !this.state.slideDown && this.state.slideUp ? " slide-up" : " slide-down") }>
                         <Signup toggleSlideDown={this.toggleSlideDown}  toggleSlideUp={this.toggleSlideUp} state={this.state} handleLoggedIn={this.props.handleLoggedIn}
                         />
                     </div>
