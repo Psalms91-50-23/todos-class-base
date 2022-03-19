@@ -115,7 +115,8 @@ export default class Signup extends Component {
                             />
                             {this.state.minPasswordCharError &&
                             <span className="error-msg">
-                                Min requirement for password must have 1 special character "!@#$%^&", 1 Lower and Upper character and 1 number "0-9" and password length 6 or greater
+                                Min requirement for password must have 1 special character "!@#$%^&", 1 Lower and Upper character,
+                                1 number "0-9" and password length 6 or greater
                             </span>
                             }                           
                         </div>

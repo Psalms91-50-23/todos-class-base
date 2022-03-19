@@ -116,7 +116,6 @@ export function registerUser( userState, slideDown, updateState ){
     if( allUsers ){
             let foundUser = null;
             foundUser = allUsers.find( (user) => {
-                (Object.keys(user));
                 if(Object.keys(user)[0] === userState.email){  
                     return user ;
                 }

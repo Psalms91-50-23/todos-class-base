@@ -13,6 +13,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+html {
+  width: 100vw;
+}
 
 h1, h3 {
   color: #ff6f47;

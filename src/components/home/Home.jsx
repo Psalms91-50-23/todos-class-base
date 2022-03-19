@@ -14,7 +14,6 @@ export default class Home extends Component {
         todos: [],
         newTodo: "",
         filteredTodos: [],
-        showText: false,
         updated: false
       }
     }
