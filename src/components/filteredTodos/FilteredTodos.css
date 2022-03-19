@@ -13,9 +13,7 @@
 
 .filter-todo {
     padding: 1rem;
-    height: 100%;
-
-  }
+}
 
 .select {
     display: flex;
@@ -36,7 +34,7 @@ select {
     background-color: white;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     width: 13rem;
     height: 100%; 
@@ -53,7 +51,6 @@ select {
     cursor: pointer;
     pointer-events: none;
     transition: all 0.3s ease;
-    height: 100%;
 }
 
 .select:hover::after {
