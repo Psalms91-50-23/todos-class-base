@@ -112,7 +112,8 @@ export function registerUser( userState, slideDown, updateState ){
     if (localStorage.getItem("users")) {
         allUsers = JSON.parse(localStorage.getItem("users"))
     }
-    //if currentUser already exists and users, test if email is already saved before registering
+    /* testing if user email already exists in data and if not 
+    register otherwise send error message by updating state ofr userExists */
     if( allUsers ){
             let foundUser = null;
             foundUser = allUsers.find( (user) => {
