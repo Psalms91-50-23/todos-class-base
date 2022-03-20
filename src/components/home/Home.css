@@ -17,8 +17,12 @@
     width: 100%;
     margin: 0px 10px;
     box-sizing: border-box;
-    min-height: 100vh;
+    /* background-color: red; */
+    /* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
+    background-color: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     height: auto;
+    background-image: linear-gradient(to right, rgba(246, 211, 101, 1), rgba( 253, 160, 133,1));
+    min-height: 100vh; 
 }
 
 .header-container {
@@ -28,13 +32,14 @@
     flex-direction: column;
     position: sticky;
     top: 0px;
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    /* background-color: linear-gradient(120deg, #f6d365 0%, #fda085 20%); */
     min-height: 20vh;
     width: 100%;
     margin: 0px 10px;
-    padding-left: 2rem;
+    padding-left: 10px;
     padding-right: 0.5rem;
     box-sizing: border-box;
+    background-image: linear-gradient(to right, rgba(246, 211, 101, 1), rgba( 253, 160, 133,1));
 }
 
 .username {
@@ -44,6 +49,7 @@
     width: 100%;
     justify-content: space-between;
     box-sizing: border-box;
+    padding-right: 15px;
     /* padding-right: 1rem; */
 }
 
@@ -54,7 +60,6 @@
 .logout-button {
     border: none;
     background-color: transparent;
-    /* margin-left: 25px; */
 }
 
 .logout-button:hover {
@@ -82,7 +87,7 @@ h2 {
     display: flex;
     justify-content: center;
     margin: 10px;
-    padding-right: 1.5rem;
+    padding-right: 15px;
     min-width: 200px;
 }
 
@@ -100,15 +105,17 @@ h2 {
     height: 100%;
     box-sizing: border-box;
     padding-bottom: 1rem;
+    padding-right: 20px;
 }
 
 .todo-input {
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     width: 100%;
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     border: none;
+    padding: 0rem 1rem;
 }
 
 .todo-input:focus {
@@ -133,7 +140,7 @@ h2 {
 
 .add-plus {
     background-color: white;
-    padding: 0.45rem;
+    padding: 0.5rem;
 }
 
 .add-plus-hover {
@@ -150,8 +157,8 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.3rem;
-    font-size: 2rem;
+    padding: 0.2rem;
+    font-size: 1.7rem;
 }
 
 .fa-plus-hover {
@@ -164,19 +171,3 @@ h2 {
     padding-left: 1.1rem;
 }
 
-@media only screen and (max-width: 600px) {
-    .header-container {
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 150%);
-    }
-}
-@media only screen and (min-width: 601px) {
-    .header-container {
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 150%);
-    }
-}
-@media only screen and (min-width: 1000px) {
-    
-    .header-container {
-        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 140%);
-    }
-}

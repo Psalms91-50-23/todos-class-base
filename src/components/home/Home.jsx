@@ -83,22 +83,22 @@ export default class Home extends Component {
 
   render(){
     return (
-      <div className="home">
-        <div className="home-container">
-          <div className="header-container">
-            <div className='username'>
-                <h2>{this.state.username}'s Todo List</h2>
-              <div className="logout">
-                  <button 
-                    className="logout-button" 
-                    onClick={() => this.props.handleLogOut()}
-                  >
-                    <span className="logout-icon">
-                      <i className='fa fa-sign-out fa-3x'></i> 
-                      {/* <LogoutIcon fontSize="large" /> */}
-                    </span>
-                  </button>
-              </div>
+    <div className="home">
+      <div className="home-container">
+        <div className="header-container">
+          <div className='username'>
+            <h2>{this.state.username}'s Todo List</h2>
+            <div className="logout">
+              <button 
+                className="logout-button" 
+                onClick={() => this.props.handleLogOut()}
+              >
+                <span className="logout-icon">
+                  <i className='fa fa-sign-out fa-3x'></i> 
+                  {/* <LogoutIcon fontSize="large" /> */}
+                </span>
+              </button>
+            </div>
             </div>
             <div className="userInput">
               <form className="home-form" onSubmit={e => this.newTodo(e)}>

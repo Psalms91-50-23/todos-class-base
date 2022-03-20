@@ -24,6 +24,7 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+    padding: 0 10px;
 }
 
 .top-right-fold {
@@ -53,10 +54,6 @@
     max-width: 300px;
     width: 100%;
 }
-
-/* .signup-username {
-    margin-top: 10px;
-} */
 
 .signup-email {
     display: flex;
@@ -88,8 +85,9 @@
 }
 
 .signup-title {
-    /* box-sizing: border-box; */
-    /* margin-top: 0.5rem; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .signup-title  > h3 {
@@ -101,25 +99,11 @@
     margin: 5px 0px;
     font-size: 0.8rem;
 }
-/* .signup-password {
-    margin-top: 10px;
-} */
-
 .signup-confirmPassword {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    /* margin-top: 10px; */
 }
-/* 
-.signup-confirmPassword > span {
-    margin-top: 10px;
-}
-
-.signup-email > span {
-    margin-top: 10px;
-    font-size: 1rem;
-} */
 
 .signup-submitButton {
     margin-bottom: 10px;

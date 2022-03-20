@@ -64,7 +64,7 @@ export default class Signup extends Component {
     render() {
         return (
             <div className='signup '>
-                <div className="signin-title">
+                <div className="signup-titleContainer">
                     <h1>Sign-Up</h1>
                 </div>
                 <div className="top-right-fold" style={{ display: this.props.state.showFold ? "block" : "none"}}></div>

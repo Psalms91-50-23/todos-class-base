@@ -12,7 +12,7 @@
 }
 
 .filter-todo {
-    padding: 1rem;
+    padding: 17px;
 }
 
 .select {
@@ -28,16 +28,15 @@ select {
     appearance: none;
     outline: 0;
     box-shadow: none;
-    border: 0 !important;
+    border: 0;
     background-image: none;
     color: #ff6f47;
     background-color: white;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 12px;
     cursor: pointer;
     width: 13rem;
-    height: 100%; 
 }
 /* Arrow */
 .select::after {
@@ -46,7 +45,7 @@ select {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1rem;
+    padding: 17px;
     background: #ff6f47;
     cursor: pointer;
     pointer-events: none;
