@@ -21,10 +21,19 @@ export default class App extends Component {
   }
 
   handleLogOut = () => {
-    localStorage.removeItem("currentUser")
-    this.setState({
-      loggedIn: !this.state.loggedIn
-    })
+    if(localStorage.getItem("currentUser")){
+      localStorage.removeItem("currentUser")
+      this.setState({
+        loggedIn: !this.state.loggedIn
+      })
+      window.location.reload()
+    }else{
+      localStorage.removeItem("currentUser")
+      this.setState({
+        loggedIn: !this.state.loggedIn
+      })
+    }
+  
     // window.location.reload()
   }
 
