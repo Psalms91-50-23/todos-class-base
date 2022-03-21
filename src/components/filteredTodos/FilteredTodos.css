@@ -18,7 +18,7 @@
 .select {
     display: flex;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 select {
@@ -36,20 +36,26 @@ select {
     font-weight: 700;
     font-size: 12px;
     cursor: pointer;
+    max-height: 52px;
     width: 13rem;
 }
 /* Arrow */
 .select::after {
 /* /25BC will add an arrow down icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     content: "\25BC";
     position: absolute;
     top: 0;
     right: 0;
-    padding: 17px;
+    width: 45px;
+    height: 52px;
     background: #ff6f47;
     cursor: pointer;
     pointer-events: none;
     transition: all 0.3s ease;
+   
 }
 
 .select:hover::after {

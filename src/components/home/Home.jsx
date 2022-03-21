@@ -152,7 +152,6 @@ export default class Home extends Component {
                         todos={this.state.todos} 
                         updateHomeState={this.updateState}
                         filteredTodos={this.state.filteredTodos}
-                        toggleDone={this.toggleDone}
                       />  
                     ) 
                   })
@@ -166,7 +165,6 @@ export default class Home extends Component {
                         todoDeleted={this.todoDeleted}
                         todos={this.state.todos}
                         updateHomeState={this.updateState}
-                        toggleDone={this.toggleDone}
                       />  
                     )
                   })
