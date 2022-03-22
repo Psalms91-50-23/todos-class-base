@@ -50,9 +50,9 @@ export default class FilteredTodos extends Component {
           name="options"
           onChange={(e) => this.filterTodos(e, this.props.updateHomeState)}
         >
-          <option value="all">all</option>
-          <option value="completed">completed</option>
-          <option value="uncompleted">uncompleted</option>
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="uncompleted">Uncompleted</option>
         </select>
       </div>
     )
