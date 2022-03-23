@@ -7,17 +7,21 @@
     box-sizing: border-box;
     margin: 10px 0px;
     min-width: 200px;
+    height: 60px;
+   
 }
 
 .todo-task {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
     padding: 10px;
 }
 
 .todo-buttonContainer {
+    display: flex;
+    flex-direction: row;
     height: auto;
     margin-left: 10px;
     box-sizing: border-box;
@@ -34,19 +38,19 @@
 
 .fade {
     background-color: rgba(255, 255, 255, 0.5);
-    
 }
+
 .fade-check {
     background: rgba(11, 212, 162, 0.5) !important;
     color: rgba(255, 255, 255, 0.5) !important;
 }
+
 .button-check {
     height: 60px;
     width: 60px;
     border: none;
     background: rgb(11, 212, 162);
     color: white;
- 
 }
 
 .button-trash {
@@ -55,7 +59,6 @@
     border: none;
     background: #ff6f47;
     color: white;
-    /* outline: none; */
 }
 
 .fade-trash {
@@ -67,7 +70,12 @@
 }
 
 .fall {
-    transform: translateY(10rem) rotateZ(20deg);
+    transform: translateY(10rem) rotateZ(30deg);
+    transition: all 0.5s ease;
     opacity: 0;
 }
 
+td {
+    margin: 0;
+    padding: 0;
+}

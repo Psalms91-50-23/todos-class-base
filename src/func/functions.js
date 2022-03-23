@@ -188,11 +188,12 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
             let foundUserValues = Object.values(foundUser)[0]
             let newUser = { [userState.email] : 
                 { username: foundUserValues.username, 
-                password: foundUserValues.password, 
-                email: foundUserValues.email, 
-                todos: foundUserValues.todos, 
-                encodedPattern: foundUserValues.encodedPattern
-            }}
+                    password: foundUserValues.password, 
+                    email: foundUserValues.email, 
+                    todos: foundUserValues.todos, 
+                    encodedPattern: foundUserValues.encodedPattern
+                }
+             }
             localStorage.setItem("currentUser", JSON.stringify(newUser))
             allUsers.push(newUser)
             handleLoggedIn()
@@ -215,16 +216,17 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
     }    
 }
 
-export function saveTodo(todo){
+export function saveTodo(todo, updateHomeState){
     let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))
     let tempTodos = null
     if(currentUser[0].todos.length){
-        currentUser[0].todos.splice(0,1,todo)
+        currentUser[0].todos.splice(0,0,todo)
     }else{
         tempTodos = [todo]
         currentUser[0].todos = tempTodos
     }
     localStorage.setItem("currentUser", JSON.stringify({[currentUser[0].email]: currentUser[0]}))
+    updateHomeState({updated:true, newTodo: "", todos: currentUser[0].todos })
 }
 
 export function updateCurrentUserTodos(todos){
@@ -239,7 +241,6 @@ export function getTodos(){
     //grab the current user details
     let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))[0]
     let currentUserKey = currentUser.email
-    // let currentUserValues = currentUser[0]
     let todos = null
     if(currentUser.todos){
         todos = currentUser.todos
@@ -253,27 +254,34 @@ export function getTodos(){
     }
 }
 
-export function deleteTodo(todos, todoIdKey){
+export function deleteTodo(todos, todoIdKey, updateHomeState ){
     //grab current User details 
-    let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))[0]
-    let todosFiltered = null
+    let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))[0];
+    let todosFiltered = null;
+    console.log(todos);
     //filter todos
-    todosFiltered = todos.filter((_, index) => index !== todoIdKey)
-    currentUser.todos = todosFiltered
+    todosFiltered = todos.filter((_, index) => index !== todoIdKey);
+    console.log("id ", todoIdKey);
+    console.log(todosFiltered);
+
+    currentUser.todos = todosFiltered;
     //save it back to local Storage
-    localStorage.setItem("currentUser", JSON.stringify({[currentUser.email]: currentUser}))
-    //returns filtered Todos so state can be updated
-    return todosFiltered
+    localStorage.setItem("currentUser", JSON.stringify({[currentUser.email]: currentUser}));
+    console.log(todosFiltered);
+
+    updateHomeState({ todos: currentUser.todos, updated: true });
+
 }
 
 export function saveTodoToLocalStorage(todos){
     if(localStorage.getItem("currentUser")){
-        let currentUserDetails = JSON.parse(localStorage.getItem("currentUser"))
-        let currentUserValues = Object.values(currentUserDetails)[0]
-        currentUserValues.todos = todos
-        let currentUserKey = Object.keys(currentUserDetails)[0]
-        let allUsers = JSON.parse(localStorage.getItem("users"))
+        let currentUserDetails = JSON.parse(localStorage.getItem("currentUser"));
+        let currentUserValues = Object.values(currentUserDetails)[0];
+        currentUserValues.todos = todos;
+        let currentUserKey = Object.keys(currentUserDetails)[0];
+        let allUsers = JSON.parse(localStorage.getItem("users"));
         //update all users in local storage with current User data before logging out
+        
         let tempAllUsers = allUsers.map((user,i) => {
             let userKey = Object.keys(user)[0]
             if(userKey === currentUserKey){

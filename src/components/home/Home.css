@@ -16,7 +16,8 @@
     align-items: center;
     width: 100%;
     margin: 0px 10px;
-    height: auto;
+    height: 100%;
+    /* height: auto; */
     background-image: linear-gradient(to right, rgba(246, 211, 101, 1), rgba( 253, 160, 133,1));
     min-height: 100vh; 
 }
@@ -44,7 +45,7 @@
     width: 100%;
     justify-content: space-between;
     box-sizing: border-box;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
 .logout {
@@ -79,15 +80,19 @@ h2 {
 
 .table {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 10px;
-    padding-right: 15px;
+    padding-right: 10px;
     min-width: 200px;
 }
 
 .todo-title {
+    text-align: center;
     color: white;
     font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
 }
 
 .userInput {
@@ -99,7 +104,7 @@ h2 {
     height: 100%;
     box-sizing: border-box;
     padding-bottom: 1rem;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .todo-input {
@@ -167,4 +172,3 @@ h2 {
     padding-left: 1.1rem;
     height: 52px;
 }
-

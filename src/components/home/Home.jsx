@@ -28,14 +28,14 @@ export default class Home extends Component {
       });
       let currentUserKey = Object.keys(currentUserDetails)[0];
       let allUserDetails = JSON.parse(localStorage.getItem("users"));
-      let allUserkeys = [];
+      // let allUserkeys = [];
 
       allUserDetails = allUserDetails.map((user, i) => {
         //values of the user email
         let userValues = Object.values(user)[0];
         //key is the users email
         let key = Object.keys(user)[0];
-        allUserkeys = allUserkeys.concat(Object.keys(user));
+        // allUserkeys = allUserkeys.concat(Object.keys(user));
         if(key === currentUserKey){
           let newUpdatedUserDetails = { [key]: { ...userValues, todos: this.state.todos}};
           //at index i remove 1, that current users details and values and put in the new values which includes updated todos
@@ -70,16 +70,10 @@ export default class Home extends Component {
 
   newTodo = (e) => {
     e.preventDefault()
-    saveTodo({task: this.state.newTodo, completed: false})
-    this.setState({
-      todos: [{task: this.state.newTodo, completed: false},...this.state.todos],
-      newTodo: ""
-    })
+    let todo = { task: this.state.newTodo, completed: false }
+    saveTodo( todo, this.updateState)
   }
     
-  todoDeleted = (idKey) => {
-    this.setState({todos: deleteTodo(this.state.todos,idKey)})
-  }
 
   render(){
     return (
@@ -133,19 +127,19 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="table">
-            <table>
-              <thead className="todo-title">
-                <tr>
-                  <th >Todo</th>
-                </tr>
-              </thead>
-              <tbody>
+          <table>
+            <thead className="todo-title">
+              <tr>
+                <th >Todo</th>
+              </tr>
+            </thead>
+            <tbody>
                 {
                   this.state.filteredTodos.length? 
                   this.state.filteredTodos?.map((todo,i) => {
                     return (
                       <Todo 
-                        key={i} 
+                        key={todo.task+" "+i} 
                         filteredIdKey={i} 
                         todo={todo} 
                         todoDeleted={this.todoDeleted}
@@ -159,7 +153,7 @@ export default class Home extends Component {
                   this.state.todos?.map((todo,i) => {
                     return (
                       <Todo 
-                        key={i} 
+                        key={todo.task+" "+i} 
                         idKey={i} 
                         todo={todo} 
                         todoDeleted={this.todoDeleted}

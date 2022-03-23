@@ -37,7 +37,7 @@ select {
     font-size: 0.9rem;
     cursor: pointer;
     max-height: 52px;
-    width: 13rem;
+    width: 10rem;
 }
 /* Arrow */
 .select::after {
