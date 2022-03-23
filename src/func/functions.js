@@ -72,11 +72,9 @@ export function encodePassword(password){
     for(var i = 0 ; i < passwordChar.length ; i ++){
         //this variable will hold how many characters within password to hide actual password
         let numOfHashCharToAdd = Math.floor(Math.random()*10)+1
-        for(var j = 0 ; j <= numOfHashCharToAdd ; j ++){
-            
+        for(var j = 0 ; j <= numOfHashCharToAdd ; j ++){   
             let randomCharIndex = Math.floor(Math.random()*70)
-            let tempChar = characters[randomCharIndex]
-        
+            let tempChar = characters[randomCharIndex]     
             if( j ===  numOfHashCharToAdd ){
                 //when j loop reaches end add the letter from password in
                 passwordEncoded += passwordChar[i]
@@ -98,7 +96,6 @@ export function decodePassword( encodedPattern, passwordEncoded ){
         let passwordCharIndex = encodedPattern[i]
         passwordDecoded += passwordEncoded.charAt(passwordCharIndex-1)
     }
-    console.log('password decoded ', passwordDecoded);
     return passwordDecoded
 }
 
@@ -259,19 +256,12 @@ export function deleteTodo(todos, todoIdKey, updateHomeState ){
     //grab current User details 
     let currentUser = Object.values(JSON.parse(localStorage.getItem("currentUser")))[0];
     let todosFiltered = null;
-    console.log(todos);
     //filter todos
     todosFiltered = todos.filter((_, index) => index !== todoIdKey);
-    console.log("id ", todoIdKey);
-    console.log(todosFiltered);
-
     currentUser.todos = todosFiltered;
     //save it back to local Storage
     localStorage.setItem("currentUser", JSON.stringify({[currentUser.email]: currentUser}));
-    console.log(todosFiltered);
-
-    updateHomeState({ todos: currentUser.todos, updated: true });
-
+    updateHomeState({ todos: currentUser.todos });
 }
 
 export function saveTodoToLocalStorage(todos){
@@ -282,7 +272,6 @@ export function saveTodoToLocalStorage(todos){
         let currentUserKey = Object.keys(currentUserDetails)[0];
         let allUsers = JSON.parse(localStorage.getItem("users"));
         //update all users in local storage with current User data before logging out
-        
         let tempAllUsers = allUsers.map((user,i) => {
             let userKey = Object.keys(user)[0]
             if(userKey === currentUserKey){
