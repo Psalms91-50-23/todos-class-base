@@ -21,40 +21,22 @@ export default class App extends Component {
   }
 
   handleLogOut = () => {
-    if(localStorage.getItem("currentUser")){
-      localStorage.removeItem("currentUser")
-      this.setState({
-        loggedIn: !this.state.loggedIn
-      })
-      window.location.reload()
-    }else{
-      localStorage.removeItem("currentUser")
-      this.setState({
-        loggedIn: !this.state.loggedIn
-      })
-    }
-  
-    // window.location.reload()
+    localStorage.removeItem("currentUser")
+    this.setState({
+      loggedIn: false
+    })
   }
 
   render = () => {
-    if(localStorage.getItem("currentUser") !== null ){
       return (
         <Routes>
-          <Route exact path="/" element={<Home handleLogOut={this.handleLogOut} />} ></Route>
-        </Routes>
-      )
-    }
-    else{
-      return (
-        <Routes>
-           <Route exact path="/" element={ !this.state.loggedIn ? 
+           <Route exact path="/" element={ !this.state.loggedIn && !localStorage.getItem("currentUser") ? 
              <Login handleLoggedIn={this.handleLoggedIn} /> 
              : 
              <Home handleLogOut={this.handleLogOut} setState={this.setState} state={this.state} /> } >
            </Route>
          </Routes>
     ) 
-    }   
+    // }   
   }
 }

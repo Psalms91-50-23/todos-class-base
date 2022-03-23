@@ -53,24 +53,16 @@ export default class Login extends Component {
     }
 
     handleChange = (e) => {
-        e.preventDefault()
-        if([e.target.name] === "password"){
-            this.setState({
-                passwordMatchError: false
-            })
-            this.setState({
-                [e.target.name] : e.target.value
-            }) 
-        }else{
-            this.setState({
-                [e.target.name] : e.target.value
-            }) 
-        }
+        // e.preventDefault()
+        this.setState({
+            passwordMatchError: false,
+            [e.target.name] : e.target.value
+        })
     }
  
-    login = (e, handleLoggedIn ) => {
+    login = (e) => {
         e.preventDefault()
-        loginUser( this.state, handleLoggedIn, this.updateValue )
+        loginUser( this.state, this.props.handleLoggedIn, this.updateValue )
     }
     
     render() {
@@ -82,8 +74,8 @@ export default class Login extends Component {
                             <h1>Login</h1>
                         </div>
                         <div className="form-container">
-                            <form className="login-form" onSubmit={e => this.login(e, this.props.handleLoggedIn)}>
-                                <div className="login-username">
+                            <form className="login-form" onSubmit={(e) => this.login(e)}>
+                                {/* <div className="login-username">
                                     <h3>UserName</h3>
                                     <input 
                                         className="input margin-top-bottom font-big"
@@ -93,7 +85,7 @@ export default class Login extends Component {
                                         value={this.state.username} 
                                         onChange={ e => this.handleChange(e)}
                                     />
-                                </div>
+                                </div> */}
                                 <div className="login-email">
                                     <h3>Email</h3>
                                     <input 

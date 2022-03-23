@@ -72,12 +72,12 @@ export function encodePassword(password){
     for(var i = 0 ; i < passwordChar.length ; i ++){
         //this variable will hold how many characters within password to hide actual password
         let numOfHashCharToAdd = Math.floor(Math.random()*10)+1
-        for(var j = 0 ; j < numOfHashCharToAdd ; j ++){
+        for(var j = 0 ; j <= numOfHashCharToAdd ; j ++){
             
             let randomCharIndex = Math.floor(Math.random()*70)
             let tempChar = characters[randomCharIndex]
         
-            if( j ===  numOfHashCharToAdd-1 ){
+            if( j ===  numOfHashCharToAdd ){
                 //when j loop reaches end add the letter from password in
                 passwordEncoded += passwordChar[i]
                 //keep track of location of the letter in the array for decoding
@@ -98,6 +98,7 @@ export function decodePassword( encodedPattern, passwordEncoded ){
         let passwordCharIndex = encodedPattern[i]
         passwordDecoded += passwordEncoded.charAt(passwordCharIndex-1)
     }
+    console.log('password decoded ', passwordDecoded);
     return passwordDecoded
 }
 
@@ -145,11 +146,12 @@ export function registerUser( userState, slideDown, updateState ){
         allUsers = [];
         let tempEncodedPassword = encodePassword(userState.password);
         const newUser = { [userState.email]: 
-            { username: userState.username, 
+            {   username: userState.username, 
                 password: tempEncodedPassword , 
                 email: userState.email, 
-                encodedPattern: encodedNum} 
-            };
+                encodedPattern: encodedNum
+            } 
+        };
         allUsers.push(newUser);
         localStorage.setItem("users", JSON.stringify(allUsers));
         slideDown();
@@ -169,7 +171,6 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
             let tempUserKey = Object.keys(user)[0];
             let passwordDecoded = null
             passwordDecoded = decodePassword(tempUserValues.encodedPattern, tempUserValues.password )
-
             if( tempUserKey === userState.email && passwordDecoded === userState.password){
                 passwordMatch = true
                 return user;
@@ -187,7 +188,7 @@ export function loginUser( userState, handleLoggedIn, updateValue ){
         if(foundUser && passwordMatch === true){
             let foundUserValues = Object.values(foundUser)[0]
             let newUser = { [userState.email] : 
-                { username: foundUserValues.username, 
+                {   username: foundUserValues.username, 
                     password: foundUserValues.password, 
                     email: foundUserValues.email, 
                     todos: foundUserValues.todos, 
