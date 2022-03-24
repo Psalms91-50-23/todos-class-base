@@ -35,14 +35,18 @@ export default class Todo extends Component {
         /* this below adds the fall state to class, and the delay in the setTimeout
         should be higher than the animation time in css */
         this.setState({
-            fall: true,
-            idKey: this.props.idKey
+            fall: true
         })
         /* this is like onTransitionedEnd, wait for a certain time, time of the animation
-        then delete */
-        setTimeout(() => {
-            deleteTodo( this.props.todos, this.props.idKey, this.props.updateHomeState )
-        },600)
+        then delete, this was my initial way, work around */
+        // setTimeout(() => {
+        //     deleteTodo( this.props.todos, this.props.idKey, this.props.updateHomeState )
+        // },600)
+    }
+
+    //got my transitioned end to work as onTransitionedEnd the intended way
+    onTransitionedEnd = () => {
+        deleteTodo( this.props.todos, this.props.idKey, this.props.updateHomeState )
     }
 
     render(){
@@ -50,7 +54,9 @@ export default class Todo extends Component {
         <tr
             className={"todo-tableRow" +(this.props.todo.completed && !this.state.fall ? " fade" 
             : !this.props.todo.completed && this.state.fall ? " fall" 
-            : this.props.todo.completed && this.state.fall ? " fall": "")}>
+            : this.props.todo.completed && this.state.fall ? " fall": "")}
+            onTransitionEnd={this.onTransitionedEnd}
+        >
             <td className={"todo-task"+(this.props.todo.completed? " completed":"")}>
             {
                 this.props.todo.task
