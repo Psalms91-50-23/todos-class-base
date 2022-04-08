@@ -12,7 +12,7 @@
 }
 
 .filter-todo {
-    padding: 17px;
+    padding: 15px;
 }
 
 .select {
@@ -37,7 +37,7 @@ select {
     font-size: 0.9rem;
     cursor: pointer;
     max-height: 52px;
-    width: 10rem;
+    width: 12rem;
 }
 /* Arrow */
 .select::after {
