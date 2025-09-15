@@ -32,7 +32,7 @@ export default class FilteredTodos extends Component {
         if(options === "completed" && todo.completed === true){
           return todo
         } 
-        if(options === "uncompleted" && todo.completed === false){
+        if(options === "incompleted" && todo.completed === false){
           return todo
         }
       })
