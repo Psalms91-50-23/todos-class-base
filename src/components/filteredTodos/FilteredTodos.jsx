@@ -28,13 +28,11 @@ export default class FilteredTodos extends Component {
     }else{
 
       let todos = this.props.todos
-      todos = todos.filter((todo,i) => {
-        if(options === "completed" && todo.completed === true){
-          return todo
+      todos = todos.filter((todo) => {
+        if(options === "completed" && todo.completed === true || options === "incompleted" && todo.completed === false){
+          return true
         } 
-        if(options === "incompleted" && todo.completed === false){
-          return todo
-        }
+        return false
       })
       this.setState({filteredTodos: todos, todos: this.props.homeState.todos})
       updateHomeState({...this.props.homeState, filteredTodos: todos})
