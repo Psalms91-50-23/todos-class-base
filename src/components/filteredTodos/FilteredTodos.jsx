@@ -29,7 +29,7 @@ export default class FilteredTodos extends Component {
 
       let todos = this.props.todos
       todos = todos.filter((todo) => {
-        if(options === "completed" && todo.completed === true || options === "incompleted" && todo.completed === false){
+        if((options === "completed" && todo.completed === true) || (options === "incompleted" && todo.completed === false)){
           return true
         } 
         return false
