@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import  { Component } from 'react'
 import Todo from '../todo/Todo';
-// import LogoutIcon from '@mui/icons-material/Logout';
 import './Home.css'
-import { getTodos, saveTodo, deleteTodo, saveTodoToLocalStorage } from "../../func/functions"
+import { getTodos, saveTodo, saveTodoToLocalStorage } from "../../func/functions"
 import FilteredTodos from '../filteredTodos/FilteredTodos'
 
 export default class Home extends Component {
@@ -28,18 +27,15 @@ export default class Home extends Component {
       });
       let currentUserKey = Object.keys(currentUserDetails)[0];
       let allUserDetails = JSON.parse(localStorage.getItem("users"));
-      // let allUserkeys = [];
 
       allUserDetails = allUserDetails.map((user, i) => {
         //values of the user email
         let userValues = Object.values(user)[0];
         //key is the users email
         let key = Object.keys(user)[0];
-        // allUserkeys = allUserkeys.concat(Object.keys(user));
         if(key === currentUserKey){
           let newUpdatedUserDetails = { [key]: { ...userValues, todos: this.state.todos}};
           //at index i remove 1, that current users details and values and put in the new values which includes updated todos
-          // allUserDetails.splice(i, 1 , newUpdatedUserDetails);
           return newUpdatedUserDetails
         }
         else{
@@ -89,7 +85,6 @@ export default class Home extends Component {
               >
                 <span className="logout-icon">
                   <i className='fa fa-sign-out fa-3x'></i> 
-                  {/* <LogoutIcon fontSize="large" /> */}
                 </span>
               </button>
             </div>
