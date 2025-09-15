@@ -52,7 +52,7 @@ export default class FilteredTodos extends Component {
         >
           <option value="all">All</option>
           <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
+          <option value="incompleted">Incompleted</option>
         </select>
       </div>
     )
